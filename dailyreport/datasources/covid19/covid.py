@@ -5,21 +5,24 @@ from datetime import datetime
 covid_daily_case_url = 'https://coronavirus.data.gov.uk/downloads/csv/coronavirus-cases_latest.csv'
 covid_daily_death_url = 'https://coronavirus.data.gov.uk/downloads/csv/coronavirus-deaths_latest.csv'
 
-total_case_df = pd.read_csv(requests.get(covid_daily_case_url, stream=True).raw)
-total_death_df = pd.read_csv(requests.get(covid_daily_death_url, stream=True).raw)
 
-# print(total_case_df.iloc[0, 0:])
-# print(total_case_df['Area name'].unique())
-# print(total_death_df.iloc[0, 0:])
-# print(total_death_df['Reporting date'].unique())
+def get_covid_data():
+    total_case_df = pd.read_csv(requests.get(covid_daily_case_url, stream=True).raw)
+    total_death_df = pd.read_csv(requests.get(covid_daily_death_url, stream=True).raw)
 
-# Create string of today's date in the form YYYY-MM-DD
-today_date_str = datetime.now().strftime("%Y-%m-%d")
+    # print(total_case_df.iloc[0, 0:])
+    # print(total_case_df['Area name'].unique())
+    # print(total_death_df.iloc[0, 0:])
+    # print(total_death_df['Reporting date'].unique())
 
-# daily_case_df = uk_case_df.loc[uk_case_df['Specimen date'] == today_date_str]
-england_daily_case_df = total_case_df.loc[(total_case_df['Area name'] == 'England') & (total_case_df['Specimen date'] == '2020-07-18')]
-england_daily_death_df = total_death_df.loc[(total_death_df['Area name'] == 'England') & (total_death_df['Reporting date'] == '2020-07-18')]
+    # Create string of today's date in the form YYYY-MM-DD
+    today_date_str = datetime.now().strftime("%Y-%m-%d")
 
-york_daily_case_df = total_case_df.loc[(total_case_df['Area code'] == 'E06000014') & (total_case_df['Specimen date'] == '2020-07-18')] # Has both upper tier and lower tier local authorities
-york_daily_death_df = total_death_df.loc[(total_death_df['Area code'] == 'E06000014') & (total_death_df['Reporting date'] == '2020-07-18')]
-print(york_daily_case_df.iloc[1, 0:])
+    # daily_case_df = uk_case_df.loc[uk_case_df['Specimen date'] == today_date_str]
+    england_daily_case_df = total_case_df.loc[(total_case_df['Area name'] == 'England') & (total_case_df['Specimen date'] == '2020-07-18')]
+    england_daily_death_df = total_death_df.loc[(total_death_df['Area name'] == 'England') & (total_death_df['Reporting date'] == '2020-07-18')]
+
+    york_daily_case_df = total_case_df.loc[(total_case_df['Area code'] == 'E06000014') & (total_case_df['Specimen date'] == '2020-07-18')] # Has both upper tier and lower tier local authorities
+    york_daily_death_df = total_death_df.loc[(total_death_df['Area code'] == 'E06000014') & (total_death_df['Reporting date'] == '2020-07-18')]
+    # print(york_daily_case_df.iloc[1, 0:])
+    return england_daily_case_df, england_daily_death_df, york_daily_case_df, york_daily_death_df
