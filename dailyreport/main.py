@@ -57,17 +57,17 @@ try:
 except IndexError:
 	york_total_death = 0
 
-print(today_date_str)
-
-print(england_daily_case)
-print(england_daily_death)
-print(york_daily_case)
-print(york_daily_death)
-
-print(england_total_case)
-print(england_total_death)
-print(york_total_case)
-print(york_total_death)
+# print(today_date_str)
+#
+# print(england_daily_case)
+# print(england_daily_death)
+# print(york_daily_case)
+# print(york_daily_death)
+#
+# print(england_total_case)
+# print(england_total_death)
+# print(york_total_case)
+# print(york_total_death)
 
 latex_jinja_env = jinja2.Environment(
 	block_start_string='\BLOCK{',
@@ -86,8 +86,9 @@ latex_jinja_env = jinja2.Environment(
 # Gets the reportTemplate
 template = latex_jinja_env.get_template('./latex_templates/reportTemplate.tex')
 # Loads the data into the template
-document = template.render(gdcases=str(england_daily_case_df))
+document = template.render(gdcases=str(england_daily_case), gtcases=str(england_total_case), gddeaths=str(england_daily_death), gtdeaths=str(england_total_death), ldcases=str(york_daily_case), ltcases=str(york_total_case), lddeaths=str(york_daily_death), ltdeaths=str(york_total_death))
 # Write document
 with open("dailyReport.tex", "w") as output:
 	output.write(document)
+
 
