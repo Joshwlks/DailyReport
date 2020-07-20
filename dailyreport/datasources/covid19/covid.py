@@ -25,4 +25,4 @@ def get_covid_data():
     york_daily_case_df = total_case_df.loc[(total_case_df['Area code'] == 'E06000014') & (total_case_df['Specimen date'] == '2020-07-18')] # Has both upper tier and lower tier local authorities
     york_daily_death_df = total_death_df.loc[(total_death_df['Area code'] == 'E06000014') & (total_death_df['Reporting date'] == '2020-07-18')]
     # print(york_daily_case_df.iloc[1, 0:])
-    return england_daily_case_df, england_daily_death_df, york_daily_case_df, york_daily_death_df
+    return today_date_str, england_daily_case_df, england_daily_death_df, york_daily_case_df, york_daily_death_df
