@@ -2,3 +2,4 @@ jinja2~=2.11.2
 requests~=2.24.0
 pandas~=1.0.5
 Jinja2~=2.11.2
+pdflatex~=0.1.3

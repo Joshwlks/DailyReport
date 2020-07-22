@@ -1,8 +1,8 @@
 import dailyreport.datasources.covid19.covid as covid
 import jinja2
 import os
+import subprocess
 import pdflatex
-from pdflatex import PDFLaTeX
 from jinja2 import Template
 
 covid_data_tuple = covid.get_covid_data()
@@ -95,5 +95,9 @@ document = template.render(ed_cases=str(england_daily_case), et_cases=str(englan
 with open("dailyReport.tex", "w") as output:
     output.write(document)
 
-# pdfl = pdflatex.PDFLaTeX.from_texfile("dailyReport.tex")
-# pdf = pdfl.create_pdf(keep_pdf_file=True, keep_log_file=True)
+# Generates PDF from the .tex file written above
+proc = subprocess.Popen(['pdflatex', 'dailyReport.tex'])
+proc.communicate()
+
+#os.unlink('dailyReport.tex')
+#os.unlink('dailyReport.log')
