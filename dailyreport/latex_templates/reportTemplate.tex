@@ -3,30 +3,33 @@
 \usepackage{tabularx}
 \usepackage{multirow}
 \usepackage{graphicx}
+\usepackage[table]{xcolor}
 \title{Daily Report for \today}
 \date{}
 \author{}
+\pagecolor{black}
+\color{white}
+\pagenumbering{gobble}
+ \newcolumntype{a}{ >{\columncolor{red}} c }
 %! language = Latex
 \begin{document}
-\maketitle
-\large \center Your daily report on the Covid-19 cases in your country and your local area. \\\\
+  \maketitle
+  \large \center Your daily report on the Covid-19 cases in your country and your local area. \\\\
 
-\begin{center}
-\resizebox{\textwidth}{!}{%
-\begin{tabular}{ c|c|c }
-  \hline
-                  & England & York \\
-  \hline
-  Daily Cases: & \VAR{ed_cases} & \VAR{yd_cases} \\
-  \hline
-  Total Cases: & \VAR{et_cases} & \VAR{yt_cases} \\
-  \hline
-  Daily Deaths: & \VAR{ed_deaths} & \VAR{yd_deaths} \\
-  \hline
-  Total Deaths: & \VAR{et_deaths} & \VAR{yt_deaths} \\
-\end{tabular}%
-}
-\end{center}
+  \begin{center}
+    \resizebox{\textwidth}{!}{%
+    \begin{tabular}{ c|a|c|a|c }
+      \hline
+      & \multicolumn{2}{|c|}{Daily} & \multicolumn{2}{|c|}{Total} \\
+      \hline
+      & Cases  & Deaths & Cases  & Deaths \\
+      \hline
+      England & \VAR{ed_cases} & \VAR{ed_deaths} & \VAR{et_cases} & \VAR{et_deaths}  \\
+      \hline
+      York & \VAR{yd_cases} & \VAR{yd_deaths} & \VAR{yt_cases} & \VAR{yt_deaths}      \\
+      \hline
+    \end{tabular}%
+    }
+  \end{center}
 
-
-\end{document}
+  \end{document}
