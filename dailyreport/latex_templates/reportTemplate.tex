@@ -1,0 +1,32 @@
+\documentclass{article}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{multirow}
+\usepackage{graphicx}
+\title{Daily Report for \today}
+\date{}
+\author{}
+%! language = Latex
+\begin{document}
+\maketitle
+\large \center Your daily report on the Covid-19 cases in your country and your local area. \\\\
+
+\begin{center}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{ c|c|c }
+  \hline
+                  & England & York \\
+  \hline
+  Daily Cases: & \VAR{ed_cases} & \VAR{yd_cases} \\
+  \hline
+  Total Cases: & \VAR{et_cases} & \VAR{yt_cases} \\
+  \hline
+  Daily Deaths: & \VAR{ed_deaths} & \VAR{yd_deaths} \\
+  \hline
+  Total Deaths: & \VAR{et_deaths} & \VAR{yt_deaths} \\
+\end{tabular}%
+}
+\end{center}
+
+
+\end{document}
