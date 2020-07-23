@@ -2,8 +2,7 @@ import dailyreport.datasources.covid19.covid as covid
 import jinja2
 import os
 import subprocess
-import pdflatex
-from jinja2 import Template
+import numpy as np
 
 covid_data_tuple = covid.get_covid_data()
 today_date_str = covid_data_tuple[0]
@@ -19,7 +18,7 @@ york_daily_death_df = covid_data_tuple[4]
 # print(york_daily_death_df.iloc[0]['Daily change in deaths'])
 
 try:
-    england_daily_case = england_daily_case_df.iloc[0]['Daily lab-confirmed cases']
+    england_daily_case = england_daily_case_df.iloc[0]['Change in cumulative cases']
 except IndexError:
     england_daily_case = 0
 
@@ -29,7 +28,7 @@ except IndexError:
     england_daily_death = 0
 
 try:
-    york_daily_case = york_daily_case_df.iloc[0]['Daily lab-confirmed cases']
+    york_daily_case = york_daily_case_df.iloc[0]['Change in cumulative cases']
 except IndexError:
     york_daily_case = 0
 
@@ -57,6 +56,23 @@ try:
     york_total_death = york_daily_death_df.iloc[0]['Cumulative deaths']
 except IndexError:
     york_total_death = 0
+
+
+def change_if_nan(str_to_change):
+    if np.isnan(str_to_change):
+        return 0
+    else:
+        return str_to_change
+
+
+england_daily_case = change_if_nan(england_daily_case)
+england_daily_death = change_if_nan(england_daily_death)
+york_daily_case = change_if_nan(york_daily_case)
+york_daily_death = change_if_nan(york_daily_death)
+england_total_case = change_if_nan(england_total_case)
+england_total_death = change_if_nan(england_total_death)
+york_total_case = change_if_nan(york_total_case)
+york_total_death = change_if_nan(york_total_death)
 
 # print(today_date_str)
 #
