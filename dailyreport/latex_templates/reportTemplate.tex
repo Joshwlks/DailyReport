@@ -4,6 +4,8 @@
 \usepackage{multirow}
 \usepackage{graphicx}
 \usepackage[table]{xcolor}
+\usepackage{ifthen}
+
 \title{Daily Report for \today}
 \date{}
 \author{}
@@ -12,6 +14,8 @@
 \pagenumbering{gobble}
  \newcolumntype{a}{ >{\columncolor{red}} c }
 %! language = Latex
+\newcounter{warning}
+
 \begin{document}
   \maketitle
   \large \center Your daily report on the Covid-19 cases in your country and your local area.
@@ -33,5 +37,10 @@
     \end{tabular}%
     }
   \end{center}
+
+  \vspace{2cm}
+
+\setcounter{warning}{\VAR{ed_cases}}
+\ifthenelse{\value{warning}>500}{\textcolor{red}{\bf\Huge Warning! High number of Covid19 cases in England}}{\Huge Stay Alert!}
 
   \end{document}

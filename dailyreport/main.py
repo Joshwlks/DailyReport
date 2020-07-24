@@ -18,42 +18,42 @@ york_daily_death_df = covid_data_tuple[4]
 # print(york_daily_death_df.iloc[0]['Daily change in deaths'])
 
 try:
-    england_daily_case = england_daily_case_df.iloc[0]['Change in cumulative cases']
+    england_daily_case = int(england_daily_case_df.iloc[0]['Change in cumulative cases'])
 except IndexError:
     england_daily_case = 0
 
 try:
-    england_daily_death = england_daily_death_df.iloc[0]['Daily change in deaths']
+    england_daily_death = int(england_daily_death_df.iloc[0]['Daily change in deaths'])
 except IndexError:
     england_daily_death = 0
 
 try:
-    york_daily_case = york_daily_case_df.iloc[0]['Change in cumulative cases']
+    york_daily_case = int(york_daily_case_df.iloc[0]['Change in cumulative cases'])
 except IndexError:
     york_daily_case = 0
 
 try:
-    york_daily_death = york_daily_death_df.iloc[0]['Daily change in deaths']
+    york_daily_death = int(york_daily_death_df.iloc[0]['Daily change in deaths'])
 except IndexError:
     york_daily_death = 0
 
 try:
-    england_total_case = england_daily_case_df.iloc[0]['Cumulative lab-confirmed cases']
+    england_total_case = int(england_daily_case_df.iloc[0]['Cumulative lab-confirmed cases'])
 except IndexError:
     england_total_case = 0
 
 try:
-    england_total_death = england_daily_death_df.iloc[0]['Cumulative deaths']
+    england_total_death = int(england_daily_death_df.iloc[0]['Cumulative deaths'])
 except IndexError:
     england_total_death = 0
 
 try:
-    york_total_case = york_daily_case_df.iloc[0]['Cumulative lab-confirmed cases']
+    york_total_case = int(york_daily_case_df.iloc[0]['Cumulative lab-confirmed cases'])
 except IndexError:
     york_total_case = 0
 
 try:
-    york_total_death = york_daily_death_df.iloc[0]['Cumulative deaths']
+    york_total_death = int(york_daily_death_df.iloc[0]['Cumulative deaths'])
 except IndexError:
     york_total_death = 0
 
@@ -73,6 +73,7 @@ england_total_case = change_if_nan(england_total_case)
 england_total_death = change_if_nan(england_total_death)
 york_total_case = change_if_nan(york_total_case)
 york_total_death = change_if_nan(york_total_death)
+
 
 # print(today_date_str)
 #

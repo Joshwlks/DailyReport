@@ -1,6 +1,6 @@
 import requests
 import pandas as pd
-from datetime import datetime
+from datetime import datetime, timedelta
 
 covid_daily_case_url = 'https://coronavirus.data.gov.uk/downloads/csv/coronavirus-cases_latest.csv'
 covid_daily_death_url = 'https://coronavirus.data.gov.uk/downloads/csv/coronavirus-deaths_latest.csv'
@@ -16,8 +16,8 @@ def get_covid_data():
     # print(total_death_df['Reporting date'].unique())
 
     # Create string of today's date in the form YYYY-MM-DD
-    today_date_str = datetime.now().strftime("%Y-%m-%d")
-    #today_date_str = "2020-07-22"
+    #today_date_str = datetime.now().strftime("%Y-%m-%d")
+    today_date_str = "2020-07-22"
 
     # daily_case_df = uk_case_df.loc[uk_case_df['Specimen date'] == today_date_str]
     england_daily_case_df = total_case_df.loc[(total_case_df['Area name'] == 'England') & (total_case_df['Specimen date'] == today_date_str)]
